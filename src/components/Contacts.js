@@ -18,12 +18,16 @@ class Contacts extends Component {
             },
             {
                 id: 3,
-                name: 'Harry BLack',
+                name: 'Harry Black',
                 email: 'hblack@gmail.com',
                 phone: '555-557-6755'
             }
         ]
     };
+
+    deleteContact = () => {
+        console.log(123);
+    }
 
     render(){
         const { contacts } = this.state;
@@ -33,6 +37,7 @@ class Contacts extends Component {
                     <Contact 
                         key={contact.id}
                         contact={contact}
+                        deleteClickHandler={this.deleteContact}
                     />
                 ))}
             </div>
