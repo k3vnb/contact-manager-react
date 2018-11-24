@@ -25,9 +25,17 @@ class Contacts extends Component {
         ]
     };
 
-    deleteContact = () => {
-        console.log(123);
-    }
+    deleteContact = id => {
+        console.log(id);
+        const { contacts } = this.state;
+//filter our contacts array as to where the current contact.id is not included
+        const newContacts = contacts.filter(contact =>
+            contact.id !== id);
+
+            this.setState({
+                contacts: newContacts
+        });
+    };
 
     render(){
         const { contacts } = this.state;
@@ -37,7 +45,7 @@ class Contacts extends Component {
                     <Contact 
                         key={contact.id}
                         contact={contact}
-                        deleteClickHandler={this.deleteContact}
+                        deleteClickHandler={this.deleteContact.bind(this, contact.id)}
                     />
                 ))}
             </div>
