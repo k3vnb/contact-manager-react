@@ -7,6 +7,7 @@ import Header from './components/layout/Header';
 import About from './components/pages/About';
 import Contacts from './components/contacts/Contacts';
 import AddContact from './components/contacts/AddContact';
+import NotFound from './components/pages/NotFound';
 
 class App extends Component {
   render() {
@@ -14,15 +15,15 @@ class App extends Component {
       <Provider>
         <Router>
         <div className="App">
-            <h1>App Component</h1>
-            <Header />
-            <div className="container">
+          <Header />
+          <div className="container">
             <Switch>
               <Route exact path="/" component={Contacts} />
               <Route exact path="/contact/add" component={AddContact} />
               <Route exact path="/about" component={About} />
+              <Route component={NotFound} />
             </Switch>
-            </div>
+          </div>
         </div>
         </Router>
       </Provider>
