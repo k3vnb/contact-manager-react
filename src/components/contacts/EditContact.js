@@ -26,7 +26,9 @@ class AddContact extends Component {
     onSubmit = async (dispatch, e) => {
         e.preventDefault();
         const { name, email, phone } = this.state;
-// Check for Errors
+
+
+        // Check for Errors
         if(name === ''){
             this.setState({errors: {name: 'Name is required' }});
             return;
@@ -39,6 +41,18 @@ class AddContact extends Component {
             this.setState({errors: {phone: 'Phone is required' }});
             return;
         }
+
+        const updContact = {
+            name,
+            email,
+            phone
+        }
+
+        const { id } = this.props.match.params;
+
+        const res = await axios.put(`https://jsonplaceholder.typicode.com/users/${id}`, updContact);
+
+        dispatch({ type: 'UPDATE_CONTACT', payload: res.data})
  
         // Clear State
         this.setState({
